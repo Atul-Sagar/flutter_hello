@@ -15,27 +15,32 @@ class _TimerPageState extends State<TimerPage> {
   Timer? _timer;
   bool _isRunning = false;
 
-  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+      FlutterLocalNotificationsPlugin();
 
-  void _initializeNotifications() async{
-    const AndroidInitializationSettings initializationSettingsAndroid = AndroidInitializationSettings('@mipmap/ic_launcher');
-    const InitializationSettings initializationSettings = InitializationSettings(android: initializationSettingsAndroid);
+  void _initializeNotifications() async {
+    const AndroidInitializationSettings initializationSettingsAndroid =
+        AndroidInitializationSettings('@mipmap/ic_launcher');
+    const InitializationSettings initializationSettings =
+        InitializationSettings(android: initializationSettingsAndroid);
 
     await flutterLocalNotificationsPlugin.initialize(initializationSettings);
   }
 
-
   Future<void> _showNotification() async {
-    const AndroidNotificationDetails androidPlatformChannelSpecifics = AndroidNotificationDetails(
-      'timer_channel_id',
-      'Timer Notifications',
-      channelDescription: 'Notifies when timer finishes',
-      importance: Importance.max,
-      priority: Priority.high,
-      ticker: 'ticker',
-    );
+    const AndroidNotificationDetails androidPlatformChannelSpecifics =
+        AndroidNotificationDetails(
+          'timer_channel_id',
+          'Timer Notifications',
+          channelDescription: 'Notifies when timer finishes',
+          importance: Importance.max,
+          priority: Priority.high,
+          ticker: 'ticker',
+        );
 
-    const NotificationDetails platformChannelSpecifics = NotificationDetails(android: androidPlatformChannelSpecifics);
+    const NotificationDetails platformChannelSpecifics = NotificationDetails(
+      android: androidPlatformChannelSpecifics,
+    );
 
     await flutterLocalNotificationsPlugin.show(
       0,
@@ -46,32 +51,32 @@ class _TimerPageState extends State<TimerPage> {
     );
   }
 
-
   void _requestNotificationPermission() async {
-    final plugin = flutterLocalNotificationsPlugin
-            .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>();
+    final plugin =
+        flutterLocalNotificationsPlugin
+            .resolvePlatformSpecificImplementation<
+              AndroidFlutterLocalNotificationsPlugin
+            >();
 
     final granted = await plugin?.requestNotificationsPermission();
     print('Notification permission granted: $granted');
-
-
   }
 
   Future<void> _testNotification() async {
-  await flutterLocalNotificationsPlugin.show(
-    0,
-    'Test Notification',
-    'This is a test notification.',
-    const NotificationDetails(
-      android: AndroidNotificationDetails(
-        'test_channel',
-        'Test Channel',
-        importance: Importance.max,
-        priority: Priority.high,
+    await flutterLocalNotificationsPlugin.show(
+      0,
+      'Test Notification',
+      'This is a test notification.',
+      const NotificationDetails(
+        android: AndroidNotificationDetails(
+          'test_channel',
+          'Test Channel',
+          importance: Importance.max,
+          priority: Priority.high,
+        ),
       ),
-    ),
-  );
-}
+    );
+  }
 
   @override
   void initState() {
@@ -81,7 +86,6 @@ class _TimerPageState extends State<TimerPage> {
   }
 
   void _startTimer() async {
-
     await _testNotification();
 
     if (_timer != null) _timer!.cancel();
@@ -130,10 +134,7 @@ class _TimerPageState extends State<TimerPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: AppBar(
-        title: const Text('Timer'),
-        backgroundColor: Colors.black,
-      ),
+      appBar: AppBar(title: const Text('Timer'), backgroundColor: Colors.white),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -160,14 +161,15 @@ class _TimerPageState extends State<TimerPage> {
                 divisions: 60,
                 label: '$_seconds s',
                 activeColor: Colors.indigo,
-                onChanged: _isRunning
-                    ? null
-                    : (value) {
-                        setState(() {
-                          _seconds = value.toInt();
-                          _initialSeconds = _seconds;
-                        });
-                      },
+                onChanged:
+                    _isRunning
+                        ? null
+                        : (value) {
+                          setState(() {
+                            _seconds = value.toInt();
+                            _initialSeconds = _seconds;
+                          });
+                        },
               ),
               const SizedBox(height: 30),
 
@@ -187,7 +189,7 @@ class _TimerPageState extends State<TimerPage> {
                     child: const Text('Reset'),
                   ),
                 ],
-              )
+              ),
             ],
           ),
         ),
