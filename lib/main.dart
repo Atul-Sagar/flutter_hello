@@ -5,6 +5,7 @@ import 'tools/calculator_page.dart';
 import 'package:flutter_hello/tools/notes/notes_page.dart';
 import 'package:flutter_hello/tools/calculator_page.dart';
 import 'package:flutter_hello/tools/stopwatch_page.dart';
+import 'package:flutter_hello/tools/timer_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -55,6 +56,7 @@ class MyApp extends StatelessWidget{
         '/calculator': (context) => const CalculatorPage(),
         '/notes': (context) => const NotesPage(),
         '/stopwatch': (context) => const StopwatchPage(),
+        '/timer': (context) => const TimerPage(),
       },
     );
   }
