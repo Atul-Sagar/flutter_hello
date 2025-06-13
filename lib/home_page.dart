@@ -14,11 +14,7 @@ class HomePage extends StatelessWidget{
     ToolCard(icon: Icons.note, label: 'Notes', routeName: '/notes'),
     ToolCard(icon: Icons.timer, label: 'Stopwatch', routeName: '/stopwatch'),
     ToolCard(icon: Icons.timer, label: 'Timer', routeName: '/timer'),
-    ToolCard(icon: Icons.code, label: 'Snippets', routeName: '/snippets'),
-    ToolCard(icon: Icons.terminal, label: 'Terminal', routeName: '/terminal'),
     ToolCard(icon: Icons.check_circle, label: 'To-Do', routeName: '/todo'),
-    ToolCard(icon: Icons.merge_type, label: 'Git Client', routeName: '/git'),
-    ToolCard(icon: Icons.format_align_left, label: 'JSON Formatter', routeName: '/json'),
   ];
     return Scaffold(
       appBar: AppBar(title: const Text('Home Page')),
