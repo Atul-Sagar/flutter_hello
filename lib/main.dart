@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hello/home_page.dart';
-// import 'tools/calculator_page.dart';
-// import 'tools/notes/notes_page.dart';
+
 import 'package:flutter_hello/tools/notes/notes_page.dart';
 import 'package:flutter_hello/tools/calculator_page.dart';
 import 'package:flutter_hello/tools/stopwatch_page.dart';
 import 'package:flutter_hello/tools/timer_page.dart';
 import 'package:flutter_hello/tools/todo_list_page.dart';
+import 'package:flutter_hello/tools/portfolio_tracker_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -59,6 +59,7 @@ class MyApp extends StatelessWidget{
         '/stopwatch': (context) => const StopwatchPage(),
         '/timer': (context) => const TimerPage(),
         '/todo' : (context) => const TodoListPage(),
+        '/portfolio': (context) => const PortfolioTrackerPage(),
       },
     );
   }
